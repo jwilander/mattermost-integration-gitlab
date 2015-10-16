@@ -165,7 +165,7 @@ def post_text(text):
         data['channel'] = CHANNEL
 
     headers = {'Content-Type': 'application/json'}
-    r = requests.post(MATTERMOST_WEBHOOK_URL, headers=headers, data=json.dumps(data))
+    r = requests.post(MATTERMOST_WEBHOOK_URL, headers=headers, data=json.dumps(data), verify=False)
 
     if r.status_code is not requests.codes.ok:
         print 'Encountered error posting to Mattermost URL %s, status=%d, response_body=%s' % (MATTERMOST_WEBHOOK_URL, r.status_code, r.json)
